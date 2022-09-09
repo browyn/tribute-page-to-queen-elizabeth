@@ -1,0 +1,279 @@
+@import 'variables';
+@import 'mixins';
+
+html,
+body,
+ol,
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Cabinet Grotesk', sans-serif;
+}
+
+/* Typography */
+
+%headingOne {
+    font-size: 60px;
+}
+
+%headingTwo {
+    font-size: 40px;
+}
+
+%headingThree {
+    font-size: 25px;
+}
+
+p {
+
+    line-height: 30px;
+    font-size: 18px;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Header styling */
+
+.header {
+    width: 100%;
+    @include backgroundImage;
+    background-color: rgba(0, 0, 0, 0.9);
+    background-blend-mode: color;
+
+    .con {
+        .topBar {
+            @include flex();
+            width: calc(100% - 96px);
+            padding: 48px;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+            .logoDiv {
+                margin-right: auto;
+
+                img {
+                    width: 30px;
+                    height: 40px;
+                }
+            }
+
+            .navigation {
+                margin-right: auto;
+                display: none;
+
+                @include mediaQuery('desktop') {
+                    display: block;
+                }
+
+                .nav {
+
+                    ul {
+                        @include flex();
+                        list-style-type: none;
+
+                        li {
+                            margin: 0px 24px;
+
+                            a {
+                                color: $white;
+                                opacity: 0.5;
+
+                                &:hover {
+                                    color: $white;
+                                    opacity: 1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            button.addTributes {
+                padding: 10px;
+                border: 1px solid $white;
+                color: $white;
+                background: none;
+            }
+        }
+
+        .hero {
+            @include flex(column);
+            width: calc(100% - 96px);
+            padding: 48px;
+            padding-bottom: 0;
+            align-items: initial;
+
+            @include mediaQuery('desktop') {
+                @include flex();
+            }
+
+            .logoDiv {
+                text-align: center;
+            }
+
+            .heroText {
+                padding-top: 48px;
+
+                @include mediaQuery('desktop') {
+                    flex: 0 0 60%;
+                    margin-right: auto;
+                }
+
+
+                h1 {
+                    color: $white;
+                    text-transform: uppercase;
+                    @extend %headingOne;
+                }
+
+                p {
+                    color: $white;
+                    opacity: 0.5;
+                }
+
+                p.side {
+                    text-align: right;
+                    opacity: 1;
+
+                    small {
+                        opacity: 0.5;
+                    }
+                }
+
+                img {
+                    width: 100px;
+                    height: 120px;
+                }
+            }
+
+            .heroImage {
+                @include mediaQuery('desktop') {
+                    flex: 0 0 40%;
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
+
+.main {
+    width: calc(100% - 96px);
+    padding: 48px;
+
+    h2 {
+        @extend %headingTwo;
+    }
+
+    .con {
+        .biography {
+            .content {
+                @include flex(column);
+                padding: 0%;
+                margin: 0%;
+
+                div {
+                    img {
+                        width: 100%;
+                    }
+                }
+
+                @include mediaQuery('desktop') {
+                    @include flex();
+                    align-items: flex-start;
+                    flex-wrap: wrap;
+
+                    div {
+                        margin-right: 24px;
+                    }
+
+                    div.three,
+                    div.five {
+                        max-width: 437px;
+                    }
+                }
+            }
+        }
+
+        .timeline {
+            .content {
+                @include flex(column);
+                padding: 0%;
+                margin: 0%;
+
+                @include mediaQuery('desktop') {
+                    @include flex();
+                }
+
+                div {
+                    padding: 12px;
+                    margin-bottom: 12px;
+                    border-right: 1px solid $black;
+                    border-left: 1px solid $black;
+
+                    .text {
+                        @include mediaQuery('desktop') {
+                            @include flex();
+                            align-items: flex-start;
+                            justify-content: space-between;
+                            padding: 0;
+                        }
+                        padding: 0;
+                        border-right: none;
+                        border-left: none;
+                        h3 {
+                            @extend %headingThree;
+                            margin-top: 15px;
+                            margin-right: 10px;
+                        }
+                    }
+
+                    @include mediaQuery('desktop') {
+                        margin: 12px;
+                    }
+
+                    img {
+                        width: 100%;
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+.footer {
+    width: calc(100% - 96px);
+    padding: 48px;
+    background-color: $black;
+    text-align: center;
+    .con {
+        .logoDiv {
+            img {
+                width: 40px;
+                height: 50px;
+            }
+        }
+
+        .attribution {
+            color: $white;
+            h3{
+                @extend %headingThree;
+                text-transform: uppercase;
+            }
+        }
+    }
+}

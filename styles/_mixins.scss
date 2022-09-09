@@ -1,0 +1,36 @@
+@mixin backgroundImage {
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@mixin flex($direction: row) {
+    display: flex;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+@mixin mediaQuery($device) {
+
+    @if $device ==tablet {
+        @media only screen and (min-width: 767px) {
+            @content
+        }
+    }
+
+    ;
+
+    @if $device ==desktop {
+        @media only screen and (min-width: 1440px) {
+            @content
+        }
+    }
+
+    ;
+
+    @if $device ==tabletAndDesktop {
+        @media only screen and (min-width: 767px) {
+            @content
+        }
+    }
+}
