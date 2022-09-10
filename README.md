@@ -10,4 +10,6 @@ You can click <a href="https://tribute-to-queen.netlify.app" target="_blank">her
 
 ## Site snapshots
 
+![Desktop Preview](./design/tribute-desktop.png)
 
+![Mobile Preview](./design/tribute-mobile.png)
