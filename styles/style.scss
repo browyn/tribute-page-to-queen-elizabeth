@@ -1,0 +1,376 @@
+@import 'variables';
+@import 'mixins';
+@import 'reset';
+
+body {
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    color: $darkGrayishBlue;
+    width: 100%;
+    min-height: 100vh;
+    @include backgroundImage('../images/bg-tablet-pattern.svg');
+    background-position:  right -450px top -450px;
+    @include device('desktop'){
+        @include backgroundImage('../images/bg-tablet-pattern.svg');
+        background-position:  right -150px top -200px;
+    };
+}
+
+/* Typography */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: $veryDarkBlue;
+    font-weight: 700;
+}
+
+p {
+    line-height: 30px;
+}
+
+%headingOne {
+    font-size: 38px;
+    @include device('desktop'){
+        font-size: 50px;
+    };
+}
+
+%headingTwo {
+    font-size: 35px;
+}
+
+%headingThree {
+    font-size: 16px;
+}
+
+/* */
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+
+/* Header styling begins here */
+
+.header {
+    width: 100%;
+    // @include backgroundImage('../images/bg-tablet-pattern.svg');s
+
+    .con {
+        padding: 24px;
+
+        @include device('desktop'){
+            padding: 48px 96px;
+        };
+        .navBar {
+            @include flex();
+            flex: 1;
+            justify-content: space-between;
+            align-items: initial;
+            @include device('desktop'){
+                align-items: center;
+            };
+
+            .bars {
+                @include device('desktop'){
+                    display: none;
+                };
+            }
+
+            .topLogo {
+                
+            }
+
+            .navItems {
+                display: none;
+                @include device('desktop'){
+                    display: block;
+                    margin: 0 auto;
+                };
+                .navItem {
+                    display: inline-block;
+                    margin: 0px 12px;
+
+                    a {
+                        color: $darkBlue;
+                        &:hover {
+                            color: $darkGrayishBlue;
+                        }
+                    }
+                }
+            }
+
+            .getStartedCon {
+                display: none;
+                @include device('desktop'){
+                    display: block;
+                };
+                button {
+                    @include button($brightRed, 'shadow');
+                };
+            
+            }
+        }
+
+        .hero {
+            @include flex(column);
+            justify-content: center;
+            text-align: center;
+            padding: 48px 0px 48px 0px;
+            @include device('tablet'){
+                @include flex(row-reverse);
+                text-align: left;
+            };
+            @include device('desktop'){
+                @include flex(row-reverse);
+                // align-items: initial;
+                text-align: left;
+            };
+
+            .text {
+                @include device('desktop'){
+                    flex: 0 0 50%;
+                    margin-right: auto;
+                };
+                h1 {
+                    @extend %headingOne;
+                }
+
+                button {
+                    @include button($brightRed, 'shadow');
+                }
+            }
+
+            .image {
+                @include device('tablet'){
+                    flex: 0 0 45%;
+                    margin-left: auto;
+                };
+                @include device('desktop'){
+                    flex: 0 0 45%;
+                    margin-left: auto;
+                };
+                img {
+                    width: 100%;
+                }
+            }
+
+        }
+    }
+}
+
+.main {
+    width: 100%;
+
+    .con {
+        .first {
+            @include flex(column);
+            justify-content: center;
+            text-align: center;
+            @include device('desktop'){
+                @include flex(row);
+                align-items: initial;
+                text-align: left;
+            };
+
+            .text {
+                padding: 48px 24px 48px 24px;
+                @include device('tablet'){
+                    padding: 48px 96px 48px 96px;
+                };
+                @include device('desktop'){
+                    padding: 48px 96px 48px 96px;
+                    margin-right: auto;
+                };
+                
+
+                h2 {
+                    @extend %headingTwo;
+                }
+            }
+
+            .textList {
+                padding: 48px 0px 48px 12px;
+                text-align: left;
+                @include device('tablet'){
+                    padding: 48px 0px 48px 96px;
+                };
+                @include device('desktop'){
+                    padding: 48px 96px 48px 96px;
+                };
+                
+
+                .list {
+                    padding-bottom: 48px;
+
+                    .title {
+                        @include flex;
+                        background-color: $veryPaleRed;
+                        border-radius: 50px 0 0 50px;
+                        padding: 0;
+                        @include device('desktop'){
+                            background-color: transparent;
+        
+                        };
+
+                        button {
+                            @include button($brightRed);
+                            margin-right: 20px;
+                        }
+
+                        h3 {
+                            margin: 0;
+                            @extend %headingThree;
+                        }
+                    }
+
+                    .content {
+                        @include device('desktop'){
+                            padding-left: 82px;
+                        };
+                    }
+                }
+            }
+        }
+
+        .simplify {
+            width: calc(100% - 48px);
+            padding: 48px 24px 48px 24px;
+            text-align: center;
+            @include flex(column);
+            @include backgroundImage('../images/bg-simplify-section-mobile.svg');
+            background-position: left;
+            background-color: $brightRed;
+            @include device('tablet'){
+                @include flex(row);
+                width: calc(100% - 192px);
+                text-align: left;
+                padding: 48px 96px 48px 96px;
+            };
+
+            @include device('desktop'){
+                @include flex(row);
+                @include backgroundImage('../images/bg-simplify-section-desktop.svg');
+                background-position: top right;
+                width: calc(100% - 192px);
+                text-align: left;
+                padding: 48px 96px 48px 96px;
+            };
+
+            h4 {
+                @extend %headingOne;
+                color: $veryLightGray;
+                @include device('tablet'){
+                    text-align: left;
+                    flex: 0 0 45%;
+                    margin-right: auto;
+                    font-size: 38px;
+                };
+                @include device('desktop'){
+                    flex: 0 0 45%;
+                    margin-right: auto;
+                    font-size: 38px;
+                };
+                
+            }
+
+            button {
+                @include button($veryLightGray);
+            }
+        }
+    }
+}
+
+.footer {
+    width: 100%;
+    background-color: hsl(233, 12%, 13%);
+
+    .con {
+        width: calc(100% - 48px);
+        padding: 48px 24px 48px 24px;
+        @include flex(column);
+        text-align: center;
+        @include device('desktop'){
+            @include flex(row-reverse);
+            align-items:baseline;
+            justify-content: space-around;
+        };
+
+        form {
+            input {
+                border: none;
+                padding: 15px 25px 15px 25px;
+                margin-right: 5px;
+                @include borderRadius(50px);
+                
+            }
+
+            button {
+                @include button($brightRed);
+            }
+        }
+
+        .footerLinks {
+            @include flex;
+            text-align: left;
+            align-items: initial;
+            justify-content: center;
+            @include device('desktop'){
+                justify-content: space-around;
+                flex: 0 0 33.1%;
+            };
+
+            ul {
+                flex: 0 0 50%;
+                
+                padding: 24px 12px;
+
+                li {
+                    display: block;
+                    margin: 24px 0;
+
+                    a {
+                        color: $veryLightGray;
+
+                        &:hover {
+                            color: $brightRed;
+                        }
+                    }
+                }
+            }
+        }
+        .bottomLogo {
+            margin: 24px 0;
+            @include flex(column-reverse);
+            @include device('desktop'){
+                @include flex(column);
+                text-align: left;
+                align-items: flex-start;
+            };
+            .socialLinks {
+                @include flex(row);
+                
+                margin: 0 0 24px 0;
+                @include device('desktop'){
+                    margin-top: 124px;
+                };
+    
+                img {
+                    margin: 0 24px;
+                    @include device('desktop'){
+                        margin: 0 12px 0 0;
+                    };
+                }
+            }
+    
+        }
+    }
+}

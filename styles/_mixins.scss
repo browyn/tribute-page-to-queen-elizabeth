@@ -1,6 +1,33 @@
-@mixin backgroundImage {
-    background-image: url('../images/background.jpg');
-    background-size: cover;
+@mixin button($backgroundColor, $boxShadow: 'no') {
+    padding: 15px 25px 15px 25px;
+    @include borderRadius(50px);
+    background-color: $backgroundColor;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    @if $boxShadow == 'shadow' {
+        box-shadow: 5px 15px 10px $veryPaleRed;
+    }
+
+    @if $backgroundColor == $brightRed {
+        color: $veryLightGray;
+    }
+
+    @if $backgroundColor == $veryLightGray {
+        color: $brightRed;
+    }
+    &:hover {
+        opacity: 0.9;
+    }
+}
+
+@mixin borderRadius($size) {
+    border-radius: $size;
+}
+
+@mixin backgroundImage($url) {
+    background-image: url($url);
+    background-position: top right;
     background-repeat: no-repeat;
 }
 
@@ -10,34 +37,28 @@
     flex-direction: $direction;
 }
 
-@mixin mediaQuery($device) {
+// Media Query 
 
-    @if $device ==tablet {
-        @media only screen and (min-width: 767px) {
-            @content
-        }
-    }
-
-    ;
-
-    @if $device ==smallDesktop {
-        @media only screen and (min-width: 1024px) {
+@mixin device($device) {
+    @if $device == 'mobile' {
+        @media only screen and (min-width : 320px) {
             @content
         }
     };
-
-
-    @if $device ==desktop {
-        @media only screen and (min-width: 1440px) {
+    @if $device == 'tablet' {
+        @media only screen and (min-width : 767px) {
             @content
         }
-    }
-
-    ;
-
-    @if $device ==tabletAndDesktop {
-        @media only screen and (min-width: 767px) {
+    };
+    @if $device == 'desktop' {
+        @media only screen and (min-width : 1024px) {
             @content
         }
-    }
+    };
+    @if $device == 'tabletAndDesktop' {
+        @media only screen and (min-width : 767px) {
+            @content
+        }
+    };
+    
 }
