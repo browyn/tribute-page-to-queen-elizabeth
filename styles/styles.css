@@ -267,6 +267,16 @@ main .con .biography .content .detailsOne {
   .main .con .biography .content .detailsOne div {
     margin-right: 24px;
   }
+.main .con .biography .content .detailsOne div.one {
+    flex: 0 0 calc(30% - 24px);
+  }
+.main .con .biography .content .detailsOne div.two {
+    flex: 0 0 calc(35% - 24px);
+  }
+  
+.main .con .biography .content .detailsOne div.three {
+    flex: 0 0 calc(35% - 24px);
+  }
 .main .con .biography .content .detailsTwo div {
     margin-right: 24px;
   }
