@@ -20,6 +20,13 @@
 
     ;
 
+    @if $device ==smallDesktop {
+        @media only screen and (min-width: 1024px) {
+            @content
+        }
+    };
+
+
     @if $device ==desktop {
         @media only screen and (min-width: 1440px) {
             @content

@@ -25,6 +25,7 @@ body {
 
 %headingTwo {
     font-size: 40px;
+    text-transform: uppercase;
 }
 
 %headingThree {
@@ -57,6 +58,9 @@ a {
             padding-top: 12px;
             padding-bottom: 12px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed;
+            top: 0;
+            background-color: $black;
 
             .logoDiv {
                 margin-right: auto;
@@ -71,7 +75,7 @@ a {
                 margin-right: auto;
                 display: none;
 
-                @include mediaQuery('desktop') {
+                @include mediaQuery('smallDesktop') {
                     display: block;
                 }
 
@@ -113,7 +117,7 @@ a {
             padding-bottom: 0;
             align-items: initial;
 
-            @include mediaQuery('desktop') {
+            @include mediaQuery('smallDesktop') {
                 @include flex();
             }
 
@@ -124,8 +128,8 @@ a {
             .heroText {
                 padding-top: 48px;
 
-                @include mediaQuery('desktop') {
-                    flex: 0 0 60%;
+                @include mediaQuery('smallDesktop') {
+                    flex: 0 0 45%;
                     margin-right: auto;
                 }
 
@@ -157,8 +161,8 @@ a {
             }
 
             .heroImage {
-                @include mediaQuery('desktop') {
-                    flex: 0 0 40%;
+                @include mediaQuery('smallDesktop') {
+                    flex: 0 0 50%;
                 }
 
                 img {
@@ -181,28 +185,53 @@ a {
     .con {
         .biography {
             .content {
-                @include flex(column);
-                padding: 0%;
-                margin: 0%;
+                @include flex(column-reverse);
+                width: 100%;
 
-                div {
+                @include mediaQuery('smallDesktop') {
+                    @include flex();
+                    align-items: flex-start;
+                    justify-content: space-between;
+                }
+
+                .columnOne {
+                    width: 100%;
+
+                    @include mediaQuery('smallDesktop') {
+                        display: none;
+                    }
+
                     img {
                         width: 100%;
+
+                        @include mediaQuery('desktop') {
+                            width: initial;
+                        }
+                    }
+
+                    @include mediaQuery('desktop') {
+                        @include flex(column);
+                        align-items: flex-start;
+                        flex: 0 0;
                     }
                 }
 
-                @include mediaQuery('desktop') {
-                    @include flex();
-                    align-items: flex-start;
-                    flex-wrap: wrap;
+                .columnTwo,
+                .columnThree {
+                    width: 100%;
 
-                    div {
-                        margin-right: 24px;
+                    img {
+                        width: 100%;
+
+                        @include mediaQuery('smallDesktop') {
+                            width: initial;
+                        }
                     }
 
-                    div.three,
-                    div.five {
-                        max-width: 437px;
+                    @include mediaQuery('smallDesktop') {
+                        @include flex(column);
+                        align-items: flex-start;
+                        flex: 0 1;
                     }
                 }
             }
@@ -214,8 +243,9 @@ a {
                 padding: 0%;
                 margin: 0%;
 
-                @include mediaQuery('desktop') {
+                @include mediaQuery('smallDesktop') {
                     @include flex();
+                    align-items: flex-start;
                 }
 
                 div {
@@ -225,15 +255,17 @@ a {
                     border-left: 1px solid $black;
 
                     .text {
-                        @include mediaQuery('desktop') {
+                        @include mediaQuery('smallDesktop') {
                             @include flex();
                             align-items: flex-start;
                             justify-content: space-between;
                             padding: 0;
                         }
+
                         padding: 0;
                         border-right: none;
                         border-left: none;
+
                         h3 {
                             @extend %headingThree;
                             margin-top: 15px;
@@ -241,8 +273,9 @@ a {
                         }
                     }
 
-                    @include mediaQuery('desktop') {
-                        margin: 12px;
+                    @include mediaQuery('smallDesktop') {
+                        margin-right: 12px;
+                        flex: 0 0 calc(33.3333333% - 24px);
                     }
 
                     img {
@@ -256,12 +289,81 @@ a {
 }
 
 .footer {
-    width: calc(100% - 96px);
-    padding: 48px;
     background-color: $black;
     text-align: center;
+
     .con {
+        // width: calc(100% - 96px);
+        // padding: 48px;
+        padding: 24px 0;
+
+        .tributes {
+            width: calc(100% - 96px);
+            padding: 48px;
+            text-align: left;
+            color: $white;
+
+            h2 {
+                @extend %headingTwo;
+            }
+
+            >p {
+                color: $white;
+                opacity: 0.5;
+            }
+
+            .content {
+                padding: 24px 0;
+                ;
+                text-align: center;
+                @include flex(column);
+
+                @include mediaQuery(smallDesktop) {
+                    text-align: left;
+                    @include flex();
+                    align-items: flex-start;
+                    justify-content: space-between;
+                }
+
+                .tribute {
+
+                    @include mediaQuery(smallDesktop) {
+                        flex: 0 0 45%;
+                    }
+
+                    @include mediaQuery(desktop) {
+                        text-align: left;
+                        @include flex();
+                        align-items: flex-start;
+                        flex: 0 0 45%;
+
+                        img {
+                            margin-right: 24px;
+                        }
+
+                    }
+
+                    .image p {
+                        text-transform: uppercase;
+                    }
+
+                    .image p>small{
+                        color: $white;
+                        opacity: 0.5;
+                        text-transform: capitalize;
+                    }
+                    .text p {
+                        color: $white;
+                        opacity: 0.5;
+                    }
+
+                }
+            }
+        }
+
         .logoDiv {
+            border-top: 1px solid $white;
+
             img {
                 width: 40px;
                 height: 50px;
@@ -270,7 +372,8 @@ a {
 
         .attribution {
             color: $white;
-            h3{
+
+            h3 {
                 @extend %headingThree;
                 text-transform: uppercase;
             }
