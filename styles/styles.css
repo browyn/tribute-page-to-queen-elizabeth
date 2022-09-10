@@ -215,6 +215,21 @@ a {
 .main .con .biography .content {
   display: -webkit-box;
   display: -ms-flexbox;
+ // display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0%;
+  margin: 0%;
+}
+
+main .con .biography .content .detailsOne {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -232,7 +247,7 @@ a {
 }
 
 @media only screen and (min-width: 1440px) {
-  .main .con .biography .content {
+  .main .con .biography .content .detailsOne {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -249,13 +264,16 @@ a {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
   }
-  .main .con .biography .content div {
+  .main .con .biography .content .detailsOne div {
     margin-right: 24px;
   }
-  .main .con .biography .content div.three,
+.main .con .biography .content .detailsTwo div {
+    margin-right: 24px;
+  }
+ /* .main .con .biography .content div.three,
   .main .con .biography .content div.five {
     max-width: 437px;
-  }
+  }*/
 }
 
 .main .con .timeline .content {
